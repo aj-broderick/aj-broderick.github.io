@@ -32,10 +32,22 @@
 							<!-- Content -->
 								<section>
 									<header class="main">
-										<h1>CS-625</h1>
-										<p>Data Visualization - Semester Project </p>
+										<h1>CS-625: Data Visualization - Medicare Enrollment Impact on Community Design </h1>
 									</header>
 
+              <header class="main">
+										<h3>Questions to be analyzed</h3>
+									</header>
+              
+              <ol>
+								<b><li>Question 1</b> - In areas that have a larger count of pharmacies, is there also an increased amount of the population that is on Medicare?</li>
+								<b><li>Question 2</b> - Are areas that have higher concentration of peoples enrolled in Medicare have a higher percentage of residential energy consumption for that County?</li>
+							</ol>
+
+              <header class="main"><h3>Data</h3></header>
+              <a href=""><img src="images/project_histogram.png" alt="datasources"></a>
+
+              <header class="main"><h3><b>Question 1</b> - In areas that have a larger count of pharmacies, is there also an increased amount of the populatiion that is on Medicare?</h3></header>
               <div align="center">
 							<div id="observablehq-viewof-scatter-e19ec909"></div>
               <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@observablehq/inspector@5/dist/inspector.css">
@@ -50,28 +62,31 @@
 
 									<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis. Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Pellentesque leo mauris, consectetur id ipsum sit amet, fergiat. Pellentesque in mi eu massa lacinia malesuada et a elit. Donec urna ex, lacinia in purus ac, pretium pulvinar mauris. Curabitur sapien risus, commodo eget turpis at, elementum convallis elit. Pellentesque enim turpis, hendrerit.</p>
 
+
+              <header class="main"><h3><b>Question 2</b> - Are areas that have higher concentration of peoples enrolled in Medicare have a higher percentage of residential energy consumption for that County?</h3></header>
               <div align="center">
-              <div id="observablehq-viewof-map_usa-6845067b"></div>
+              <div id="observablehq-viewof-map_usa-b3cd4b34"></div>
               <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@observablehq/inspector@5/dist/inspector.css">
               <script type="module">
               import {Runtime, Inspector} from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@5/dist/runtime.js";
-              import define from "https://api.observablehq.com/d/62bf44d588d656e3@653.js?v=4";
+              import define from "https://api.observablehq.com/d/62bf44d588d656e3@777.js?v=4";
               new Runtime().module(define, name => {
-                if (name === "viewof map_usa") return new Inspector(document.querySelector("#observablehq-viewof-map_usa-6845067b"));
+                if (name === "viewof map_usa") return new Inspector(document.querySelector("#observablehq-viewof-map_usa-b3cd4b34"));
               });
               </script>
+              <img src="..\images\cs625project_choropleth_legend" alt="legend">
               </div>
 
 									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dapibus rutrum facilisis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam tristique libero eu nibh porttitor fermentum. Nullam venenatis erat id vehicula viverra. Nunc ultrices eros ut ultricies condimentum. Mauris risus lacus, blandit sit amet venenatis non, bibendum vitae dolor. Nunc lorem mauris, fringilla in aliquam at, euismod in lectus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In non lorem sit amet elit placerat maximus. Pellentesque aliquam maximus risus, vel sed vehicula.</p>
 									
 							<div align="center">
-							<div id="observablehq-viewof-filter_map-ca65961a"></div>
+							<div id="observablehq-viewof-filter_map-e3a50b53"></div>
               <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@observablehq/inspector@5/dist/inspector.css">
               <script type="module">
               import {Runtime, Inspector} from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@5/dist/runtime.js";
-              import define from "https://api.observablehq.com/d/62bf44d588d656e3@653.js?v=4";
+              import define from "https://api.observablehq.com/d/62bf44d588d656e3@777.js?v=4";
               new Runtime().module(define, name => {
-                if (name === "viewof filter_map") return new Inspector(document.querySelector("#observablehq-viewof-filter_map-ca65961a"));
+                if (name === "viewof filter_map") return new Inspector(document.querySelector("#observablehq-viewof-filter_map-e3a50b53"));
               });
               </script>
               </div>
@@ -95,58 +110,8 @@
 									<ul>
 										<li><a href="..\index.html">Homepage</a></li>
 										<li><a href="..\images\Broderick_Resume.pdf">Resume</a></li>
-										<!--
-										<li>
-											<span class="opener">Spring 2023</span>
-											<ul>
-												<li><a href="./cs620.html">CS-620</a></li>
-												<li><a href="./stat603.html">STAT-603</a></li>
-											</ul>
-										</li>
-										-->
-										<!-- <li><a href="elements.html">Elements</a></li>
-										<li><a href="#">Etiam Dolore</a></li>
-										<li><a href="#">Adipiscing</a></li>
-										<li>
-											<span class="opener">Another Submenu</span>
-											<ul>
-												<li><a href="#">Lorem Dolor</a></li>
-												<li><a href="#">Ipsum Adipiscing</a></li>
-												<li><a href="#">Tempus Magna</a></li>
-												<li><a href="#">Feugiat Veroeros</a></li>
-											</ul>
-										</li>
-										<li><a href="#">Maximus Erat</a></li>
-										<li><a href="#">Sapien Mauris</a></li>
-										<li><a href="#">Amet Lacinia</a></li>
-										-->
 									</ul>
 								</nav>
-
-							<!-- Section -->
-							<!--	<section>
-									<header class="major">
-										<h2>Ante interdum</h2>
-									</header>
-									<div class="mini-posts">
-										<article>
-											<a href="#" class="image"><img src="..\images\pic07.jpg" alt="" /></a>
-											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
-										</article>
-										<article>
-											<a href="#" class="image"><img src="..\images\pic08.jpg" alt="" /></a>
-											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
-										</article>
-										<article>
-											<a href="#" class="image"><img src="..\images\pic09.jpg" alt="" /></a>
-											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
-										</article>
-									</div>
-									<ul class="actions">
-										<li><a href="#" class="button">More</a></li>
-									</ul>
-								</section>-->
-								
 
 							<!-- Section -->
 								<section>
