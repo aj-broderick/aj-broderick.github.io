@@ -41,15 +41,15 @@
 									</header>
 									<p>&emsp; Medicare is a topic that is brought up often in the arena of politics for an array of reasons, ranging from it’s relevancy in modern times to discussions of costs to the American people. These reasons are also coupled with the fact that as life expectancy increases, there will continue to be more and more people enrolled in Medicare. Below is a chart from KFF, and independent group that researches health policies in the US.</p></br>
 									<div align="center"><img src="..\images\cs625project_medicare.png" alt="medicare"></div>
-									<p>&emsp; Throughout this analysis, Medicare enrollment will be looked at in comparison to other recorded metrics that may or may not have a direct influence with one another. The intent is to determine what downstream impact Medicare has on non-financial activities that are happening in the same areas.</p>
+									<p>&emsp; Throughout this analysis, Medicare enrollment will be looked at in comparison to other recorded metrics that may or may not have a direct influence with one another. The intent is to determine what downstream impact Medicare has on non-financial activities that are happening in the same areas.</p></br>
 
               <!-- Questions -->
                   <header class="main">
 										<h3>Questions to be analyzed</h3>
 									</header>
               
-								&emsp;<font color="#c45454"><b>Question 1</b></font> - In areas that have a larger count of pharmacies, is there also an increased amount of the population that is on Medicare?</li></br>
-								&emsp;<font color="#c45454"><b>Question 2</b></font> - Are areas that have higher concentration of peoples enrolled in Medicare have a higher percentage of residential energy consumption for that County?</li>
+								&emsp;<b><font color="#c45454">Question 1</font></b> - In areas that have a larger count of pharmacies, is there also an increased amount of the population that is on Medicare?</br>
+								&emsp;<b><font color="#c45454">Question 2</font></b> - Are areas that have higher concentration of peoples enrolled in Medicare have a higher percentage of residential energy consumption for that County?</br>
 							
 
               <!-- Data sources -->
@@ -62,7 +62,7 @@
                 </br>
   
               <!-- Question 1 - Scatterplot -->
-                <header class="main"><h3><font color="#c45454"><b>Question 1</b> - In areas that have a larger count of pharmacies, is there also an increased amount of the population that is on Medicare?</h3></font></header>
+                <header class="main"><h3><i><font color="#c45454">Question 1 - In areas that have a larger count of pharmacies, is there also an increased amount of the population that is on Medicare?</font></i></h3></header>
                 <p>&emsp; This question hopes to find a pattern in the data where areas that have more pharmacies relate to a higher increase in the population that is enrolled in Medicare. Since the two columns in the data are quantitative, a scatterplot is created to plot the counties based on the Medicare enrollment rate and the number of pharmacies. An additional feature that was also encoded into the visual was whether the County is determined to be a Metropolitan by the Department of Agriculture. This was done to see there was any difference in Counties that have more Cities and if so, how much of a difference existed. The final piece of information that was encoded into the visual was creating a simple linear regression of the data, to try to give a quantitative value to any impact the Medicare enrollment rates had on the number of Pharmacies that are located in that County.</p>
                 <div align="center">
   							<div id="observablehq-viewof-scatter-451bec8d"></div>
@@ -80,9 +80,8 @@
 
 
               <!-- Question 2 - Chrolopleth -->
-                <header class="main"><h3><font color="#c45454"><b>Question 2</b> - Are areas that have higher concentration of peoples enrolled in Medicare have a higher percentage of residential energy consumption for that County?</font></h3></header>
+                <header class="main"><h3><i><font color="#c45454">Question 2 - Are areas that have higher concentration of peoples enrolled in Medicare have a higher percentage of residential energy consumption for that County?</font></i></h3></header>
                 <p>&emsp; Similar to the first question, this question is looking to see what impact the Medicare enrollment rate might have on an industry in that same County. For this question, the industry is not associated with the medical industry, and that is the energy industry. When it comes to energy, the metrics that was used was creating a percentage of energy that was going to residential buildings, as opposed to industrial or commercial buildings. To avoid creating a similar visual as the first question a bivariate choropleth map was created to see if there were pockets across the US that have combinations of high/low Medicare enrollment and residential energy usage.</p>
-                
                 <b>Bivariate choropleth - What is it? </b>
                 <p>&emsp; To create a bivariate choropleth each of the two metrics will have it's own three-stepped color scale created utilizing the data and then mapped. From there the maps will be overlayed with each another to create the final color scale that now has nine colors. In this analysis the three classification bins were created using the 33<sup>rd</sup> and 66<sup>th</sup> quartiles.  </p>
                 
@@ -142,9 +141,9 @@
 									&emsp;<font color="#439c9c"><b>Analysis Retrospective</b></font>
                   <p>&emsp; &emsp; Whilst there were some interesting outputs that came from the analysis, there is always room for improvement. These improvements could come in different shapes, but would ultimately improve on the insights which would result in actions. Some of these changes/enhancements would include:
                   <ul>
-                    <li><b>Scaling on scatterplot</b> - A change to a logarithmic scale could assist in seeing the trends in the relationship between the Medicare Enrollment and the number of Pharmacies. 
-                    <li><b>Normalizing Pharmacy Count</b> - By creating a rate (such as Pharmacies per 1000 people), it would better highlight potential areas of risk with undersaturation of Pharmacies
-                    <li><b>Choropleth Metrics Selection</b> - The addition of a drop-down with other metrics to select would increase the interactivity and insights a user would be able to pull from one visual. Whilst it would require more work on the backend, it would be beneficial to the end user
+                    <li><b><i>Scaling on scatterplot</i></b> - A change to a logarithmic scale could assist in seeing the trends in the relationship between the Medicare Enrollment and the number of Pharmacies. 
+                    <li><b><i>Normalizing Pharmacy Count</i></b> - By creating a rate (such as Pharmacies per 1000 people), it would better highlight potential areas of risk with undersaturation of Pharmacies
+                    <li><b><i>Choropleth Metrics Selection</i></b> - The addition of a drop-down with other metrics to select would increase the interactivity and insights a user would be able to pull from one visual. Whilst it would require more work on the backend, it would be beneficial to the end user
                   </p>
 									<hr class="major" />
 								</section>
