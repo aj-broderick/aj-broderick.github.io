@@ -47,10 +47,10 @@
                   <header class="main">
 										<h3>Questions to be analyzed</h3>
 									</header>
-              <ol>
-								<b><li>Question 1</b> - In areas that have a larger count of pharmacies, is there also an increased amount of the population that is on Medicare?</li>
-								<b><li>Question 2</b> - Are areas that have higher concentration of peoples enrolled in Medicare have a higher percentage of residential energy consumption for that County?</li>
-							</ol>
+              
+								&emsp;<font color="#c45454"><b>Question 1</b></font> - In areas that have a larger count of pharmacies, is there also an increased amount of the population that is on Medicare?</li></br>
+								&emsp;<font color="#c45454"><b>Question 2</b></font> - Are areas that have higher concentration of peoples enrolled in Medicare have a higher percentage of residential energy consumption for that County?</li>
+							
 
               <!-- Data sources -->
                 <header class="main"><h3>Data</h3></header>
@@ -59,31 +59,32 @@
                 </br>
                 <a href="https://github.com/aj-broderick/cs625/blob/main/semesterproject/semester_project_data.csv" class="fa-brands fa-square-github" target="_blank">Github Data Location</a>
                 </div>
+                </br>
   
               <!-- Question 1 - Scatterplot -->
-                <header class="main"><h3><b>Question 1</b> - In areas that have a larger count of pharmacies, is there also an increased amount of the population that is on Medicare?</h3></header>
-                <p>&emsp; This question hopes to find a pattern in the data where areas that have more pharmacies relate to a higher increase in the population that is enrolled in Medicare. Since the two columns in the data are quantitative, a scatterplot is created to plot the counties based on the Medicare enrollment rate and the number of pharmacies. An additional feature that was also encoded into the visual was whether the County is determined to be a Metropolitan by the Department of Argriculture. This was done to see there was any difference in Counties that have more Cities and if so, how much of a difference existed. The final piece of information that was encoded into the visual was creating a simple linear regression of the data, to try to give a quantitative value to any impact the Medicare enrollment rates had on the number of Pharmacies that are located in that County.</p>
+                <header class="main"><h3><font color="#c45454"><b>Question 1</b> - In areas that have a larger count of pharmacies, is there also an increased amount of the population that is on Medicare?</h3></font></header>
+                <p>&emsp; This question hopes to find a pattern in the data where areas that have more pharmacies relate to a higher increase in the population that is enrolled in Medicare. Since the two columns in the data are quantitative, a scatterplot is created to plot the counties based on the Medicare enrollment rate and the number of pharmacies. An additional feature that was also encoded into the visual was whether the County is determined to be a Metropolitan by the Department of Agriculture. This was done to see there was any difference in Counties that have more Cities and if so, how much of a difference existed. The final piece of information that was encoded into the visual was creating a simple linear regression of the data, to try to give a quantitative value to any impact the Medicare enrollment rates had on the number of Pharmacies that are located in that County.</p>
                 <div align="center">
-  							<div id="observablehq-viewof-scatter-e19ec909"></div>
+  							<div id="observablehq-viewof-scatter-451bec8d"></div>
                 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@observablehq/inspector@5/dist/inspector.css">
                 <script type="module">
                 import {Runtime, Inspector} from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@5/dist/runtime.js";
-                import define from "https://api.observablehq.com/d/62bf44d588d656e3@653.js?v=4";
+                import define from "https://api.observablehq.com/d/62bf44d588d656e3@1012.js?v=4";
                 new Runtime().module(define, name => {
-                  if (name === "viewof scatter") return new Inspector(document.querySelector("#observablehq-viewof-scatter-e19ec909"));
+                  if (name === "viewof scatter") return new Inspector(document.querySelector("#observablehq-viewof-scatter-451bec8d"));
                 });
                 </script>
                 </div>
 
-									<p>&emsp; From the visual, the results actually differed from the initial hypothesis that there would be a positive relationship between the two metrics. Starting with the Metro Counties, there existed a large number of outliers in the data, from the analysis and visual there exists a negative relationship where Counties with a higher percentage of the population enrolled in Medicare have a lower count of Pharmacies. What was interesting was that for the Nonmetro Counties, there was no relationship at all which can be seen from the Nonmetro R2 being close to zero.</p>
+									<p>&emsp; From the visual, the results actually differed from the initial hypothesis that there would be a positive relationship between the two metrics. Starting with the Metro Counties, there existed a large number of outliers in the data, from the analysis and visual there exists a negative relationship where Counties with a higher percentage of the population enrolled in Medicare have a lower count of Pharmacies. What was interesting was that for the Nonmetro Counties, there was no relationship at all which can be seen from the Nonmetro R<sup>2</sup> being close to zero.</p>
 
 
               <!-- Question 2 - Chrolopleth -->
-                <header class="main"><h3><b>Question 2</b> - Are areas that have higher concentration of peoples enrolled in Medicare have a higher percentage of residential energy consumption for that County?</h3></header>
+                <header class="main"><h3><font color="#c45454"><b>Question 2</b> - Are areas that have higher concentration of peoples enrolled in Medicare have a higher percentage of residential energy consumption for that County?</font></h3></header>
                 <p>&emsp; Similar to the first question, this question is looking to see what impact the Medicare enrollment rate might have on an industry in that same County. For this question, the industry is not associated with the medical industry, and that is the energy industry. When it comes to energy, the metrics that was used was creating a percentage of energy that was going to residential buildings, as opposed to industrial or commercial buildings. To avoid creating a similar visual as the first question a bivariate choropleth map was created to see if there were pockets across the US that have combinations of high/low Medicare enrollment and residential energy usage.</p>
                 
                 <b>Bivariate choropleth - What is it? </b>
-                <p>&emsp; To create a bivariate choropleth each of the two metrics will have it's own three-stepped color scale created utilizing the data and then mapped. From there the maps will be overlayed with each another to create the final color scale that now has nine colors. In this analysis the three classification bins were created using the 33rd and 66th quartiles.  </p>
+                <p>&emsp; To create a bivariate choropleth each of the two metrics will have it's own three-stepped color scale created utilizing the data and then mapped. From there the maps will be overlayed with each another to create the final color scale that now has nine colors. In this analysis the three classification bins were created using the 33<sup>rd</sup> and 66<sup>th</sup> quartiles.  </p>
                 
                 <div align="center">
                 <img src="..\images\cs625project_choropleth_build.png" alt="choropleth how to">
@@ -91,7 +92,7 @@
                 </div>
                 
                 <div align="center">
-                <header class="main"><h3>Greater concentration of Medicare Enrollees with High Residential Energy Usage in Mountain Ranges</h3></header>
+                <header class="main"><h3>Greater concentration of Medicare Enrollees with High Residential Energy Usage in Mountain Ranges & Florida</h3></header>
                 <p><i>(Hover on Map for more details)</i></p>
                 <div id="observablehq-viewof-map_usa-5add4969"></div>
                 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@observablehq/inspector@5/dist/inspector.css">
@@ -105,16 +106,18 @@
                 </div>
                 <p>&emsp; Whilst there are not truly unique patterns in the visual that answer the question, it does help guide the user to areas that might be of interest. From the visual, there are a couple areas on the map that stand out when looking for the dark blue that emphasize a high concentration of Medicare enrollees and a high residential energy usage rate. Some of these areas include:</p>
                 <div align = center>
+                <ul style="display: inline-block;" align="left">
                   <li> Shenandoah Valley/Blue Ridge Mountains
                   <li> Areas of Florida
                   <li> Interior Highlands
+                </ul>
                 </div>
                 <p>&emsp; Areas that also sticks out in the visual for the opposite reason is in Nevada and the surrounding States, where there is low percentages for both metrics. In this area of the US, it is sparsely populated from the desert terrain leading to lower results for the information that was analyzed.
                 </p>
                 
   									
   									
-  							<p>&emsp; An additional layer of interactivity was also created by including a second version of the chart with a drop down selection feature. This allows for a more detailed look and analysis for a single State.</p>
+  							<p>&emsp; An additional layer of interactivity was also created by including a second version of the chart with a drop-down selection feature. This allows for a more detailed look and analysis for a single State.</p>
   							<div align="center">
   							<header class="main"><h3>Select State from Dropdown to Change View</h3></header>
                 <p><i>(Hover on Map for more details)</i></p>
@@ -133,8 +136,16 @@
                   <header class="main">
 										<h3>Conclusion </h3>
 									</header>
-									<p>Lorem Ipsum</p>
-
+									&emsp;<font color="#439c9c"><b>Does Medicare Enrollment Have Impacts on Other Industries in the Same Region?</b></font>
+									<p>&emsp; &emsp; Throughout the analysis, there were times where the data hinted at impacts of Medicare Enrollment on the other metrics that it was compared to, but it begs the question "Causation versus Correlation?". There existed a <i>relationship</i> between the metrics, but there definitely no concrete proof that Medicare Enrollment caused the changes in the Number of Pharmacies or the Residential Energy usage. However it did provide some insights when making decisions about the metrics analyzed. For example, if a company was trying to sell a product to a Pharmacy in a selected area of the US, it might be worth looking at the Medicare Enrollment and the saturation of the number of Pharmacies in that area. Non-metro Counties might be at a higher risk and need the product given the low number of Pharmacies and the number of patients that they may serve. </p>
+									
+									&emsp;<font color="#439c9c"><b>Analysis Retrospective</b></font>
+                  <p>&emsp; &emsp; Whilst there were some interesting outputs that came from the analysis, there is always room for improvement. These improvements could come in different shapes, but would ultimately improve on the insights which would result in actions. Some of these changes/enhancements would include:
+                  <ul>
+                    <li><b>Scaling on scatterplot</b> - A change to a logarithmic scale could assist in seeing the trends in the relationship between the Medicare Enrollment and the number of Pharmacies. 
+                    <li><b>Normalizing Pharmacy Count</b> - By creating a rate (such as Pharmacies per 1000 people), it would better highlight potential areas of risk with undersaturation of Pharmacies
+                    <li><b>Choropleth Metrics Selection</b> - The addition of a drop-down with other metrics to select would increase the interactivity and insights a user would be able to pull from one visual. Whilst it would require more work on the backend, it would be beneficial to the end user
+                  </p>
 									<hr class="major" />
 								</section>
 
