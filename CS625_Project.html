@@ -39,9 +39,9 @@
                   <header class="main">
 										<h3>Background and Importance</h3>
 									</header>
-									<p>Medicare is a topic that is brought up often in the arena of politics for an array of reasons, ranging from it’s relevancy in modern times to discussions of costs to the American people. These reasons are also coupled with the fact that as life expectancy increases, there will continue to be more and more people enrolled in Medicare. Below is a chart from KFF, and independent group that researches health policies in the US.</p></br>
+									<p>&emsp; Medicare is a topic that is brought up often in the arena of politics for an array of reasons, ranging from it’s relevancy in modern times to discussions of costs to the American people. These reasons are also coupled with the fact that as life expectancy increases, there will continue to be more and more people enrolled in Medicare. Below is a chart from KFF, and independent group that researches health policies in the US.</p></br>
 									<div align="center"><img src="..\images\cs625project_medicare.png" alt="medicare"></div>
-									<p>Throughout this analysis, Medicare enrollment will be looked at in comparison to other recorded metrics that may or may not have a direct influence with one another. The intent is to determine what downstream impact Medicare has on non-financial activities that are happening in the same areas.</p>
+									<p>&emsp; Throughout this analysis, Medicare enrollment will be looked at in comparison to other recorded metrics that may or may not have a direct influence with one another. The intent is to determine what downstream impact Medicare has on non-financial activities that are happening in the same areas.</p>
 
               <!-- Questions -->
                   <header class="main">
@@ -61,8 +61,8 @@
                 </div>
   
               <!-- Question 1 - Scatterplot -->
-                <header class="main"><h3><b>Question 1</b> - In areas that have a larger count of pharmacies, is there also an increased amount of the populatiion that is on Medicare?</h3></header>
-                <p>This question hopes to find a pattern in the data where areas that have more pharmacies relate to a higher increase in the population that is enrolled in Medicare. Since the two columns in the data are quantitative, a scatterplot is created to plot the counties based on the Medicare enrollment rate and the number of pharmacies. An addtional feature that was also encoded into the visual was whether the County is determined to be a Metropolitain by the Department of Argiculture. This was done to see there was any difference in Counties that have more Cities and if so, how much of a difference existed. The final piece of information that was encoded into the visual was creating a simple linear regression of the data, to try to give a quantitative value to any impact the Medicare enrollment ratea had on the number of Pharmacies that are located in that County.</p>
+                <header class="main"><h3><b>Question 1</b> - In areas that have a larger count of pharmacies, is there also an increased amount of the population that is on Medicare?</h3></header>
+                <p>&emsp; This question hopes to find a pattern in the data where areas that have more pharmacies relate to a higher increase in the population that is enrolled in Medicare. Since the two columns in the data are quantitative, a scatterplot is created to plot the counties based on the Medicare enrollment rate and the number of pharmacies. An additional feature that was also encoded into the visual was whether the County is determined to be a Metropolitan by the Department of Argriculture. This was done to see there was any difference in Counties that have more Cities and if so, how much of a difference existed. The final piece of information that was encoded into the visual was creating a simple linear regression of the data, to try to give a quantitative value to any impact the Medicare enrollment rates had on the number of Pharmacies that are located in that County.</p>
                 <div align="center">
   							<div id="observablehq-viewof-scatter-e19ec909"></div>
                 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@observablehq/inspector@5/dist/inspector.css">
@@ -75,15 +75,15 @@
                 </script>
                 </div>
 
-									<p>From the visual, the results actually differed from the initial hypothesis that there would be a positive relationship between the two metrics. Starting with the Metro Counties, there existed a large number of outliers in the data, from the analysis and visual there exists a negative relationship where Counties with a higher percentage of the population enrolled in Medicare have a lower count of Pharmacies. What was interesting was that for the Nonmetro Counties, there was no relationship at all which can be seen from the Nonmetro R2 being close to zero.</p>
+									<p>&emsp; From the visual, the results actually differed from the initial hypothesis that there would be a positive relationship between the two metrics. Starting with the Metro Counties, there existed a large number of outliers in the data, from the analysis and visual there exists a negative relationship where Counties with a higher percentage of the population enrolled in Medicare have a lower count of Pharmacies. What was interesting was that for the Nonmetro Counties, there was no relationship at all which can be seen from the Nonmetro R2 being close to zero.</p>
 
 
               <!-- Question 2 - Chrolopleth -->
                 <header class="main"><h3><b>Question 2</b> - Are areas that have higher concentration of peoples enrolled in Medicare have a higher percentage of residential energy consumption for that County?</h3></header>
-                <p> Similar to the first question, this question is looking to see what impact the Medicare enrollment rate might have on an industry in that same County. For this question, the industry is not associated with the medical industry, and that is the energy industry. When it comes to energy, the metrics that was used was creating a percentage of energy that was going to residential buildings, as opposed to industrial or commerical buildings. To avoid creating a similar visual as the first question a bivariate choropleth map was created to see if there were pockets across the US that have combinations of high/low Medicare enrollment and residential energy usage.</p>
+                <p>&emsp; Similar to the first question, this question is looking to see what impact the Medicare enrollment rate might have on an industry in that same County. For this question, the industry is not associated with the medical industry, and that is the energy industry. When it comes to energy, the metrics that was used was creating a percentage of energy that was going to residential buildings, as opposed to industrial or commercial buildings. To avoid creating a similar visual as the first question a bivariate choropleth map was created to see if there were pockets across the US that have combinations of high/low Medicare enrollment and residential energy usage.</p>
                 
                 <b>Bivariate choropleth - What is it? </b>
-                <p>To create a bivariate choropleth each of the two metrics will have it's own three-stepped color scale created utilzing the data and then mapped. From there the maps will be overlayed with each another to create the final color scale that now has nine colors. In this analysis the three classification bins were created using the the 33rd and 66th quartiles.  </p>
+                <p>&emsp; To create a bivariate choropleth each of the two metrics will have it's own three-stepped color scale created utilizing the data and then mapped. From there the maps will be overlayed with each another to create the final color scale that now has nine colors. In this analysis the three classification bins were created using the 33rd and 66th quartiles.  </p>
                 
                 <div align="center">
                 <img src="..\images\cs625project_choropleth_build.png" alt="choropleth how to">
@@ -93,36 +93,38 @@
                 <div align="center">
                 <header class="main"><h3>Greater concentration of Medicare Enrollees with High Residential Energy Usage in Mountain Ranges</h3></header>
                 <p><i>(Hover on Map for more details)</i></p>
-                <div id="observablehq-viewof-map_usa_-dd82aefe"></div>
+                <div id="observablehq-viewof-map_usa-5add4969"></div>
                 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@observablehq/inspector@5/dist/inspector.css">
                 <script type="module">
                 import {Runtime, Inspector} from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@5/dist/runtime.js";
-                import define from "https://api.observablehq.com/d/62bf44d588d656e3@911.js?v=4";
+                import define from "https://api.observablehq.com/d/62bf44d588d656e3@992.js?v=4";
                 new Runtime().module(define, name => {
-                  if (name === "viewof map_usa_") return new Inspector(document.querySelector("#observablehq-viewof-map_usa_-dd82aefe"));
+                  if (name === "viewof map_usa") return new Inspector(document.querySelector("#observablehq-viewof-map_usa-5add4969"));
                 });
                 </script>
                 </div>
-                <p>Whilst there are not truly unique patterns in the visual that answer the question, it does help guide the user to areas that might be of interest. From the visual, there are a couple areas on the map that stand out when looking for the dark blue that emphasize a high concentration of Medicare enrollees and a high residential energy usage rate. Some of these areas include:
-                <ul>
-                  <li> Mountains
+                <p>&emsp; Whilst there are not truly unique patterns in the visual that answer the question, it does help guide the user to areas that might be of interest. From the visual, there are a couple areas on the map that stand out when looking for the dark blue that emphasize a high concentration of Medicare enrollees and a high residential energy usage rate. Some of these areas include:</p>
+                <div align = center>
+                  <li> Shenandoah Valley/Blue Ridge Mountains
                   <li> Areas of Florida
                   <li> Interior Highlands
-                <ul>
-                 Areas that also sticks out in the visual for the opposite reason is in Nevada and the surrounding States, where there is low percentages for both metrics. In this area of the US, it is sparsely populated from the desert terrain leading to lower results for the information that was analyzed.
+                </div>
+                <p>&emsp; Areas that also sticks out in the visual for the opposite reason is in Nevada and the surrounding States, where there is low percentages for both metrics. In this area of the US, it is sparsely populated from the desert terrain leading to lower results for the information that was analyzed.
                 </p>
                 
   									
   									
-  							<p> An additional layer of interactivity was also created by including a second version of the chart with a drop down selection feature. This allows for a more detailed look and analysis for a single State.</p>
+  							<p>&emsp; An additional layer of interactivity was also created by including a second version of the chart with a drop down selection feature. This allows for a more detailed look and analysis for a single State.</p>
   							<div align="center">
-  							<div id="observablehq-viewof-filter_map-e3a50b53"></div>
+  							<header class="main"><h3>Select State from Dropdown to Change View</h3></header>
+                <p><i>(Hover on Map for more details)</i></p>
+  							<div id="observablehq-viewof-filter_map-b8df18e7"></div>
                 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@observablehq/inspector@5/dist/inspector.css">
                 <script type="module">
                 import {Runtime, Inspector} from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@5/dist/runtime.js";
-                import define from "https://api.observablehq.com/d/62bf44d588d656e3@777.js?v=4";
+                import define from "https://api.observablehq.com/d/62bf44d588d656e3@992.js?v=4";
                 new Runtime().module(define, name => {
-                  if (name === "viewof filter_map") return new Inspector(document.querySelector("#observablehq-viewof-filter_map-e3a50b53"));
+                  if (name === "viewof filter_map") return new Inspector(document.querySelector("#observablehq-viewof-filter_map-b8df18e7"));
                 });
                 </script>
                 </div>
