@@ -156,14 +156,24 @@
 
 				<!-- Sidebar -->
 					<div id="sidebar-placeholder"></div>
-
 					<script>
-						fetch("../components/sidebar.html")
-							.then(response => response.text())
-							.then(data => {
-								document.getElementById("sidebar-placeholder").innerHTML = data;
-							})
-							.catch(error => console.error("Sidebar load error:", error));
+					  fetch('../components/sidebar.html')
+					    .then(response => response.text())
+					    .then(data => {
+					      document.getElementById('sidebar-placeholder').innerHTML = data;
+					
+					      // Toggle sidebar when the toggle button is clicked
+					      const toggleButton = document.getElementById('sidebarToggle');
+					      const sidebar = document.getElementById('sidebar');
+					
+					      if (toggleButton && sidebar) {
+					        toggleButton.addEventListener('click', (e) => {
+					          e.preventDefault(); // Prevent default anchor behavior
+					          sidebar.classList.toggle('inactive');
+					        });
+					      }
+					    })
+					    .catch(error => console.error("Sidebar load error:", error));
 					</script>
 
 
