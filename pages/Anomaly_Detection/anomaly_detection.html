@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+    <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>ML & Anomaly Detection</title>
+    <link rel="stylesheet" href="style.css" />
+    </head>
+
+<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+							<!-- Header -->
+								<header id="header">
+									<a href="..\index.html" class="logo"><strong>AJ Broderick</strong> Data Science Portfolio Site </a>
+									<ul class="icons">
+										<li><a href="https://www.linkedin.com/in/alex-broderick-aa79744b/" class="icon brands fa-linkedin"><span class="label">Twitter</span></a></li>
+						
+									</ul>
+								</header>
+
+							<!-- Content -->
+
+  <div align="center">
+    <img src="https://www.odu.edu/sites/default/files/logos/univ/png-72dpi/odu-sig-noidea-fullcolor.png" width="225" alt="ODU logo" />
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/JLab_logo_white2.jpg/250px-JLab_logo_white2.jpg" width="225" alt="JLab logo" />
+    <img src="https://cdn.vanderbilt.edu/vu-news/files/20190417211432/Oak-Ridge-National-Laboratory-logo.jpg" width="180" alt="ORNL logo" />
+  </div>
+
+  <div align="center">
+    <h1>Machine Learning & Anomaly Detection at the Spallation Neutron Source Accelerator</h1>
+    <font size=4><i>Co-Authored with Arun Thakur <a href="https://www.linkedin.com/in/thakurarun/"><sup> 1 </sup></a>, Ashish Verma<a href="https://linkedin.com/in/ashish-verma-7a99a818"><sup> 2 </sup></a> for ODU's Masters Capstone Project  </i></font>
+  </div>
+
+  <h2>Scope</h2>
+    <p>&emsp;The Spallation Neutron Source (SNS) at Oak Ridge National Laboratory is a world-leading facility for neutron scattering research, providing insights into the structure and dynamics of materials. As a complex and high-throughput scientific instrument, the ability to detect anomalies in these systems promptly and accurately is critical for ensuring experimental integrity, maintaining uptime, and protecting equipment.</p>
+
+    <p>&emsp; This report explores the application of machine learning (ML) techniques for anomaly detection within the SNS environment. By leveraging historical sensor data, waveform signals, and system logs, machine learning models—especially those using deep learning architectures—offer the potential to identify subtle, non-obvious deviations from normal operational patterns. These methods can supplement or even surpass traditional rule-based monitoring by learning complex patterns and adapting to system evolution over time. The scope of this investigation includes the selection of appropriate algorithms, data preprocessing strategies, model evaluation metrics, and integration considerations within the SNS control infrastructure.</p>
+
+  <h2>High Level Architecture</h2>
+  <h3>VAE-BiLSTM</h3>
+  <img src="media/vae_bilstm_architecture.png" alt="VAE-BiLSTM Architecture" />
+
+  <h2>Overview</h2>
+  <p><strong>VAE-BiLSTM</strong> is a hybrid deep learning architecture that combines:</p>
+  <ul>
+    <li>Variational Autoencoder (VAE) for learning compressed latent representations.</li>
+    <li>Bidirectional LSTM (BiLSTM) for modeling temporal dependencies in sequential data.</li>
+  </ul>
+
+  <h2>Architecture Breakdown</h2>
+  <h3>1. Variational Autoencoder (VAE)</h3>
+  <p><strong>Purpose:</strong></p>
+  <ul>
+    <li>Learns the underlying distribution of the input data.</li>
+    <li>Encodes inputs into a latent space, allowing reconstruction of normal patterns.</li>
+  </ul>
+
+  <p><strong>Loss Function:</strong></p>
+  <pre><code>
+ℒ_VAE = Reconstruction Loss + β · KL Divergence
+  </code></pre>
+
+  <h3>2. Bidirectional LSTM (BiLSTM)</h3>
+  <p><strong>Purpose:</strong> Captures temporal dependencies in both directions.</p>
+
+  <h3>Combined VAE-BiLSTM Flow</h3>
+  <pre><code>
+Input Sequence
+     │
+ Encoder (μ, σ)
+     │
+ Reparameterization Trick
+     │
+ Latent Vector z
+     │
+ Decoder
+     │
+Reconstructed Sequence
+     │
+   BiLSTM
+     │
+Anomaly Score
+  </code></pre>
+
+  <h3>Anomaly Detection Strategy</h3>
+  <ul>
+    <li>Train the model on normal data.</li>
+    <li>During inference, compute:</li>
+    <ul>
+      <li>Reconstruction error</li>
+      <li>Latent distance</li>
+      <li>Sequence-based anomaly score</li>
+    </ul>
+  </ul>
+
+  <h3>Loss Function</h3>
+  <p><code>loss = reconstruction_loss + beta * kl_loss + sequence_loss</code></p>
+
+  <h3>CNN-LSTM</h3>
+  <img src="media/cnn_lstm_architecture.png" alt="CNN-LSTM Architecture" />
+
+  <h2>Data Analysis</h2>
+  <p>The September 2024 data from the SNS comprised multiple sources collected across different subsystems, primarily focusing on the Differential Current Monitor (DCM) and Beam Position Monitor (BPM) channels. These datasets are currently housed separately, thus preprocessing and integration pipeline was established to prepare the dataset for downstream anomaly detection modeling.</p>
+
+    <p><strong>Parsing Binary Format Data</strong></br>
+        Raw data files were originally stored in a custom binary and to extract the information, a dedicated parser was implemented using Python provided by the Jefferson Lab. The parser decoded binary streams into structured arrays, each associated with timestamps, signal amplitudes, and relevant metadata such as channel IDs and acquisition parameters.
+    </p>
+
+    <p><strong>Merging DCM and BPM Data</strong></br>
+        After successful parsing, DCM and BPM datasets were merged based on their timestamp alignment. As the data rates and acquisition intervals differed slightly between systems, time-series interpolation and resampling techniques were applied to synchronize the signals. A unified schema was defined wherein each data point represented a composite snapshot of DCM and BPM values for a given moment in time. This merge allowed the model to capture correlations between beam behavior (BPM) and system drift (DCM), enriching the feature space for more accurate anomaly detection.
+    </p>
+
+    <p><strong>Subsampling Data</strong></br>
+        Once the data was merged into a single dataset, the team had decided to work with a subset of the data, given the short time parameter of the semester. By looking at the timestamps of the tracings, the file were grouped if the BPM settings matched the previous file. If there was a change in any of the beam settings, which was often done for fine tuning the beam, it was treated as a new grouping of tracing files. For the use of the this report and analysis, the first group of settings in September 2024 was used, giving over 1,400 files to utilize for the training and testing.
+    </p>
+
+    <p><strong>Addressing Class Imbalance with SMOTE</strong></br>
+        An initial analysis of the labeled dataset revealed a significant class imbalance, with anomalous instances representing a small fraction of the total records. To mitigate this, the Synthetic Minority Over-sampling Technique (SMOTE) was applied. SMOTE synthetically generates new samples for the minority class by interpolating between existing examples. This was executed after merging and normalization to ensure data compatibility. The resulting dataset maintained a more balanced class distribution, which helped improve model generalization and reduced the bias toward the majority (normal) class during training.
+    </p>
+
+This preprocessed and augmented dataset forms the foundation for subsequent model training and evaluation, enabling more robust detection of subtle and rare anomalies within the SNS operational environment.</p>
+
+  <h2>Current Model Architecture</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>VAE-BiLSTM</th>
+        <th>CNN-LSTM</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><pre><code>
+vae-bilstm
+├── data_preparation
+│   ├── data_loader.py
+│   └── ...
+        </code></pre></td>
+        <td><pre><code>
+cnn-lstm
+├── analysis
+│   └── evaluation.py
+│   └── ...
+        </code></pre></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Results</h2>
+  <h3>VAE-BiLSTM</h3>
+  <img src="media/vae_reconstruction_error_chart.png" alt="VAE Results" />
+  
+  <h3>CNN-LSTM</h3>
+  <img src="media/cnn_training_results.png" alt="CNN Training" />
+  <img src="media/cnn_testing_results.png" alt="CNN Testing" />
+
+  <h2>Pros and Cons</h2>
+  <table>
+    <thead>
+      <tr>
+        <th></th>
+        <th>Pros</th>
+        <th>Cons</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>VAE-BiLSTM</td>
+        <td>
+          <ul>
+            <li>Temporal Dependencies</li>
+            <li>Probabilistic Latent Space</li>
+            <li>Sequence Variability</li>
+            <li>Regularized Learning</li>
+          </ul>
+        </td>
+        <td>
+          <ul>
+            <li>Training Instability</li>
+            <li>Computational Complexity</li>
+            <li>Interpretation</li>
+            <li>Data Requirements</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td>CNN-LSTM</td>
+        <td>
+          <ul>
+            <li>Feature Extraction</li>
+            <li>Temporal Modeling</li>
+            <li>Dimensionality Reduction</li>
+            <li>Robust to Noise</li>
+          </ul>
+        </td>
+        <td>
+          <ul>
+            <li>Spatial Bias</li>
+            <li>Fixed Kernel Size</li>
+            <li>Sequence Length</li>
+            <li>Architecture Tuning</li>
+          </ul>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Future Enhancements</h2>
+  <ul>
+    <li><strong>Model Refinement</strong> – One key feature that could be done for refining the model is opening up the amount of data that is fed into them. This increased amount of data would hopefully be able to account for the nuances that exist within the data and ultimately produce a better model. For both of the models, there are parameters that could be adjusted and would change the resulting weights and outcomes. Given more time, the team would have developed additional code that could optimize the various parameters to produce the best model that it could with the data.</li>
+    <li><strong>Real-time Deployment</strong> – The ultimate goal of the this research is the develop a model that can assist in detecting the errant beams at the SNS. If after refining the model showcased results that aligned with Oak Ridge's requirements, the models could be implemented into their processes and be used in day-to-day operations.</li>
+  </ul>
+
+
+  <h2>References</h2>
+  <ul>
+    <li>Staffini et al. (2023). A Disentangled VAE-BiLSTM Model for Heart Rate Anomaly Detection. <a href="https://doi.org/10.3390/bioengineering10060683">Bioengineering</a></li>
+    <li>Zhao et al. (2021). KPI Anomaly Detection Based on VAE and SVDD. <a href="https://doi.org/10.3390/sym13112104">Symmetry</a></li>
+    <li>Abdallah et al. (2021). CNN-LSTM Anomaly Detection for SDNs. <a href="https://doi.org/10.1145/3465481.3469190">ARES '21</a></li>
+  </ul>
+
+  						</div>
+					</div>
+  <!-- Sidebar -->
+					<div id="sidebar-placeholder"></div>
+					<script>
+					  fetch('../components/sidebar.html')
+					    .then(response => response.text())
+					    .then(data => {
+					      document.getElementById('sidebar-placeholder').innerHTML = data;
+					
+					      // Toggle sidebar when the toggle button is clicked
+					      const toggleButton = document.getElementById('sidebarToggle');
+					      const sidebar = document.getElementById('sidebar');
+					
+					      if (toggleButton && sidebar) {
+					        toggleButton.addEventListener('click', (e) => {
+					          e.preventDefault(); // Prevent default anchor behavior
+					          sidebar.classList.toggle('inactive');
+					        });
+					      }
+					    })
+					    .catch(error => console.error("Sidebar load error:", error));
+					</script>
+
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
