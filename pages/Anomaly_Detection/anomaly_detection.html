@@ -40,10 +40,13 @@
   </div>
 
   <div align="center">
+    <header class="main">
     <h1>Machine Learning & Anomaly Detection at the Spallation Neutron Source Accelerator</h1>
     <font size=4><i>Co-Authored with Arun Thakur <a href="https://www.linkedin.com/in/thakurarun/"><sup> 1 </sup></a>, Ashish Verma<a href="https://linkedin.com/in/ashish-verma-7a99a818"><sup> 2 </sup></a> for ODU's Masters Capstone Project  </i></font>
+   </header>
   </div>
 
+<h2><a href="https://github.com/aj-broderick/SNS_Anomaly_Detection/tree/main">Github Repo</a></h2>
   <h2>Scope</h2>
     <p>&emsp;The Spallation Neutron Source (SNS) at Oak Ridge National Laboratory is a world-leading facility for neutron scattering research, providing insights into the structure and dynamics of materials. As a complex and high-throughput scientific instrument, the ability to detect anomalies in these systems promptly and accurately is critical for ensuring experimental integrity, maintaining uptime, and protecting equipment.</p>
 
@@ -59,23 +62,40 @@
     <li>Variational Autoencoder (VAE) for learning compressed latent representations.</li>
     <li>Bidirectional LSTM (BiLSTM) for modeling temporal dependencies in sequential data.</li>
   </ul>
+  <p>This architecture is particularly suited for <b>unsupervised anomaly detection in time-series data.</b></p>
 
   <h2>Architecture Breakdown</h2>
   <h3>1. Variational Autoencoder (VAE)</h3>
   <p><strong>Purpose:</strong></p>
   <ul>
     <li>Learns the underlying distribution of the input data.</li>
-    <li>Encodes inputs into a latent space, allowing reconstruction of normal patterns.</li>
+    <li>Encodes inputs into a <b>latent space</b>, allowing reconstruction of normal patterns.</li>
+  </ul>
+
+  <p><strong>Components:</strong></p>
+  <ul>
+    <li><strong>Encoder:</strong>strong> Outputs μ and σ² for a probabilistic latent representation.</li>
+    <li><strong>Latent Sampling:</strong> z=μ+σ⋅ϵ,where ϵ∼N(0,1)</li>
+    <li><strong>Decoder:</strong> Reconstructs the input from the latent vector z</li>
   </ul>
 
   <p><strong>Loss Function:</strong></p>
   <pre><code>
-ℒ_VAE = Reconstruction Loss + β · KL Divergence
+	L_VAE = Reconstruction Loss + β · KL Divergence
   </code></pre>
 
   <h3>2. Bidirectional LSTM (BiLSTM)</h3>
-  <p><strong>Purpose:</strong> Captures temporal dependencies in both directions.</p>
+  <p><strong>Purpose</strong>
+  <ul>
+    <il>Captures temporal dependencies in <b>both forward and backward directions.</b></p></il>
+  </ul>
 
+  <p><strong>Components</strong></p>
+  <ul>
+    <li>Two LSTM layers (forward and backward).</li>
+    <li>Concatenated output for richer context.</li>
+    <li>Optional: dense classification layer for supervised anomaly score.</li>
+  </ul>
   <h3>Combined VAE-BiLSTM Flow</h3>
   <pre><code>
 Input Sequence
@@ -99,11 +119,9 @@ Anomaly Score
   <ul>
     <li>Train the model on normal data.</li>
     <li>During inference, compute:</li>
-    <ul>
-      <li>Reconstruction error</li>
-      <li>Latent distance</li>
-      <li>Sequence-based anomaly score</li>
-    </ul>
+    <li>Reconstruction Error: High error indicates anomaly.</li>
+    <li>Latent Distance: e.g., Mahalanobis distance in latent space.</li>
+    <li>Sequence-based Anomaly Score from BiLSTM.</li>
   </ul>
 
   <h3>Loss Function</h3>
@@ -146,14 +164,44 @@ This preprocessed and augmented dataset forms the foundation for subsequent mode
         <td><pre><code>
 vae-bilstm
 ├── data_preparation
-│   ├── data_loader.py
-│   └── ...
+│    ├── data_loader.py
+│    ├── data_scaling.py
+│    └── data_transformer.py
+├── factories
+│    └── sns_raw_prep_sep_dnn_factory.py
+├── model
+│    └── vae_bilstm.py
+├── parser
+│    └── configs.py
+├── utils
+│    └── logger.py
+├── visualization
+│    └── plots.py
+├── driver.py
+├── submit.sh
+└── requirements.txt
         </code></pre></td>
         <td><pre><code>
 cnn-lstm
 ├── analysis
-│   └── evaluation.py
-│   └── ...
+│    └── evaluation.py
+├── data_preparation
+│    ├── data_loader.py
+│    ├── data_scaling.py
+│    └── data_transformer.py
+├── model
+│    └── cnn_lstm_anomaly_model.py
+├── parser
+│    └── configs.py
+├── testing
+│    └── test.py
+├── training
+│    └── train.py
+├── utils
+│    └── logger.py
+├── driver.py
+├── submit.sh
+└── requirements.txt
         </code></pre></td>
       </tr>
     </tbody>
@@ -219,17 +267,24 @@ cnn-lstm
   </table>
 
   <h2>Future Enhancements</h2>
-  <ul>
-    <li><strong>Model Refinement</strong> – One key feature that could be done for refining the model is opening up the amount of data that is fed into them. This increased amount of data would hopefully be able to account for the nuances that exist within the data and ultimately produce a better model. For both of the models, there are parameters that could be adjusted and would change the resulting weights and outcomes. Given more time, the team would have developed additional code that could optimize the various parameters to produce the best model that it could with the data.</li>
-    <li><strong>Real-time Deployment</strong> – The ultimate goal of the this research is the develop a model that can assist in detecting the errant beams at the SNS. If after refining the model showcased results that aligned with Oak Ridge's requirements, the models could be implemented into their processes and be used in day-to-day operations.</li>
-  </ul>
+  <p>As mentioned earlier in the report, the team was not able to achieve all of the goals that were set out throughout our time in the semester. If there team were able to continue with improve on the models that were developed, there would be some areas that would be addressed, including:</p>
+
+  <p><strong>Model Refinement</strong></br>
+        One key feature that could be done for refining the model is opening up the amount of data that is fed into them. This increased amount of data would hopefully be able to account for the nuances that exist within the data and ultimately produce a better model. For both of the models, there are parameters that could be adjusted and would change the resulting weights and outcomes. Given more time, the team would have developed additional code that could optimize the various parameters to produce the best model that it could with the data.
+  </p>
+
+  <p><strong>Real-time Deployment</strong></br>
+        The ultimate goal of the this research is the develop a model that can assist in detecting the errant beams at the SNS. If after refining the model showcased results that aligned with Oak Ridge's requirements, the models could be implemented into their processes and be used in day-to-day operations.
+  </p>
 
 
   <h2>References</h2>
-  <ul>
-    <li>Staffini et al. (2023). A Disentangled VAE-BiLSTM Model for Heart Rate Anomaly Detection. <a href="https://doi.org/10.3390/bioengineering10060683">Bioengineering</a></li>
-    <li>Zhao et al. (2021). KPI Anomaly Detection Based on VAE and SVDD. <a href="https://doi.org/10.3390/sym13112104">Symmetry</a></li>
-    <li>Abdallah et al. (2021). CNN-LSTM Anomaly Detection for SDNs. <a href="https://doi.org/10.1145/3465481.3469190">ARES '21</a></li>
+  <ul style="list-style-type:none;">
+	  <i>
+    <li>Staffini, A., Svensson, T., Chung, U.-i., & Svensson, A. K. (2023). A Disentangled VAE-BiLSTM Model for Heart Rate Anomaly Detection. Bioengineering, 10(6), 683.<a href="https://doi.org/10.3390/bioengineering10060683">Bioengineering</a></li>
+    <li>Zhao, Yun & Zhang, Xiuguo & Shang, Zijing & Cao, Zhiying. (2021). A Novel Hybrid Method for KPI Anomaly Detection Based on VAE and SVDD. Symmetry. 13. 2104. <a href="https://doi.org/10.3390/sym13112104">Symmetry</a></li>
+    <li>Mahmoud Abdallah, Nhien An Le Khac, Hamed Jahromi, and Anca Delia Jurcut. 2021. A Hybrid CNN-LSTM Based Approach for Anomaly Detection Systems in SDNs. In Proceedings of the 16th International Conference on Availability, Reliability and Security (ARES '21). Association for Computing Machinery, New York, NY, USA, Article 34, 1–7. <a href="https://doi.org/10.1145/3465481.3469190">ARES '21</a></li>
+  	</i>
   </ul>
 </section>
   						</div>
