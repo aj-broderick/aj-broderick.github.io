@@ -41,12 +41,13 @@
 
   <div align="center">
     <header class="main">
-    <h1>Machine Learning & Anomaly Detection at the Spallation Neutron Source Accelerator</h1>
+    <h2>Machine Learning & Anomaly Detection at the Spallation Neutron Source Accelerator</h2>
     <font size=4><i>Co-Authored with Arun Thakur <a href="https://www.linkedin.com/in/thakurarun/"><sup> 1 </sup></a>, Ashish Verma<a href="https://linkedin.com/in/ashish-verma-7a99a818"><sup> 2 </sup></a> for ODU's Masters Capstone Project  </i></font>
    </header>
   </div>
 
-<h2><a href="https://github.com/aj-broderick/SNS_Anomaly_Detection/tree/main">Github Repo</a></h2>
+<div align="center"><h3><a href="https://github.com/aj-broderick/SNS_Anomaly_Detection/tree/main">Github Repo</a><a href="https://github.com/aj-broderick/SNS_Anomaly_Detection/tree/main" class="icon brands fa-github"></h3></div>
+	
   <h2>Scope</h2>
     <p>&emsp;The Spallation Neutron Source (SNS) at Oak Ridge National Laboratory is a world-leading facility for neutron scattering research, providing insights into the structure and dynamics of materials. As a complex and high-throughput scientific instrument, the ability to detect anomalies in these systems promptly and accurately is critical for ensuring experimental integrity, maintaining uptime, and protecting equipment.</p>
 
@@ -132,19 +133,15 @@ Anomaly Score
 
   <h2>Data Analysis</h2>
   <p>The September 2024 data from the SNS comprised multiple sources collected across different subsystems, primarily focusing on the Differential Current Monitor (DCM) and Beam Position Monitor (BPM) channels. These datasets are currently housed separately, thus preprocessing and integration pipeline was established to prepare the dataset for downstream anomaly detection modeling.</p>
-
     <p><strong>Parsing Binary Format Data</strong></br>
         Raw data files were originally stored in a custom binary and to extract the information, a dedicated parser was implemented using Python provided by the Jefferson Lab. The parser decoded binary streams into structured arrays, each associated with timestamps, signal amplitudes, and relevant metadata such as channel IDs and acquisition parameters.
     </p>
-
     <p><strong>Merging DCM and BPM Data</strong></br>
         After successful parsing, DCM and BPM datasets were merged based on their timestamp alignment. As the data rates and acquisition intervals differed slightly between systems, time-series interpolation and resampling techniques were applied to synchronize the signals. A unified schema was defined wherein each data point represented a composite snapshot of DCM and BPM values for a given moment in time. This merge allowed the model to capture correlations between beam behavior (BPM) and system drift (DCM), enriching the feature space for more accurate anomaly detection.
     </p>
-
     <p><strong>Subsampling Data</strong></br>
         Once the data was merged into a single dataset, the team had decided to work with a subset of the data, given the short time parameter of the semester. By looking at the timestamps of the tracings, the file were grouped if the BPM settings matched the previous file. If there was a change in any of the beam settings, which was often done for fine tuning the beam, it was treated as a new grouping of tracing files. For the use of the this report and analysis, the first group of settings in September 2024 was used, giving over 1,400 files to utilize for the training and testing.
     </p>
-
     <p><strong>Addressing Class Imbalance with SMOTE</strong></br>
         An initial analysis of the labeled dataset revealed a significant class imbalance, with anomalous instances representing a small fraction of the total records. To mitigate this, the Synthetic Minority Over-sampling Technique (SMOTE) was applied. SMOTE synthetically generates new samples for the minority class by interpolating between existing examples. This was executed after merging and normalization to ensure data compatibility. The resulting dataset maintained a more balanced class distribution, which helped improve model generalization and reduced the bias toward the majority (normal) class during training.
     </p>
@@ -281,9 +278,9 @@ cnn-lstm
   <h2>References</h2>
   <ul style="list-style-type:none;">
 	  <i>
-    <li>Staffini, A., Svensson, T., Chung, U.-i., & Svensson, A. K. (2023). A Disentangled VAE-BiLSTM Model for Heart Rate Anomaly Detection. Bioengineering, 10(6), 683.<a href="https://doi.org/10.3390/bioengineering10060683">Bioengineering</a></li>
-    <li>Zhao, Yun & Zhang, Xiuguo & Shang, Zijing & Cao, Zhiying. (2021). A Novel Hybrid Method for KPI Anomaly Detection Based on VAE and SVDD. Symmetry. 13. 2104. <a href="https://doi.org/10.3390/sym13112104">Symmetry</a></li>
-    <li>Mahmoud Abdallah, Nhien An Le Khac, Hamed Jahromi, and Anca Delia Jurcut. 2021. A Hybrid CNN-LSTM Based Approach for Anomaly Detection Systems in SDNs. In Proceedings of the 16th International Conference on Availability, Reliability and Security (ARES '21). Association for Computing Machinery, New York, NY, USA, Article 34, 1–7. <a href="https://doi.org/10.1145/3465481.3469190">ARES '21</a></li>
+    <li>Staffini, A., Svensson, T., Chung, U.-i., & Svensson, A. K. (2023). A Disentangled VAE-BiLSTM Model for Heart Rate Anomaly Detection. Bioengineering, 10(6), 683.<a href="https://doi.org/10.3390/bioengineering10060683">Bioengineering</a></li></br>
+    <li>Zhao, Yun & Zhang, Xiuguo & Shang, Zijing & Cao, Zhiying. (2021). A Novel Hybrid Method for KPI Anomaly Detection Based on VAE and SVDD. Symmetry. 13. 2104. <a href="https://doi.org/10.3390/sym13112104">Symmetry</a></li></br>
+    <li>Mahmoud Abdallah, Nhien An Le Khac, Hamed Jahromi, and Anca Delia Jurcut. 2021. A Hybrid CNN-LSTM Based Approach for Anomaly Detection Systems in SDNs. In Proceedings of the 16th International Conference on Availability, Reliability and Security (ARES '21). Association for Computing Machinery, New York, NY, USA, Article 34, 1–7. <a href="https://doi.org/10.1145/3465481.3469190">ARES '21</a></li></br>
   	</i>
   </ul>
 </section>
