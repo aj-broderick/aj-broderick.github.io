@@ -6,7 +6,7 @@
 -->
 <html>
 	<head>
-		<title>CS-625 Data Visualization Final Project</title>
+		<title>Data Visualization</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="../assets/css/main.css" />
@@ -22,7 +22,7 @@
 
 							<!-- Header -->
 								<header id="header">
-									<a href="..\index.html" class="logo"><strong>AJ Broderick</strong> Personal Grad School Site </a>
+									<a href="..\index.html" class="logo"><strong>AJ Broderick</strong> Data Science Portfolio Site </a>
 									<ul class="icons">
 										<li><a href="https://www.linkedin.com/in/alex-broderick-aa79744b/" class="icon brands fa-linkedin"><span class="label">Twitter</span></a></li>
 						
@@ -32,7 +32,7 @@
 							<!-- Content -->
 								<section>
 									<header class="main">
-										<h2>CS-625: Data Visualization - Medicare Enrollment Impact on Community Design </h1>
+										<h2>Data Visualization - Medicare Enrollment Impact on Community Design </h1>
 									</header>
 									
               <!-- Background info -->
@@ -59,16 +59,17 @@
                 <div align="center">
                 <img src="..\images\cs625project_datasources.png" alt="datasources">
                 </br>
-                <a href="https://github.com/aj-broderick/cs625/blob/main/semesterproject/semester_project_data.csv" class="fa-brands fa-square-github" target="_blank">Github Data Location</a>
+                <a href="https://github.com/aj-broderick/ODU-CS625/blob/main/data/semester_project_data.csv" class="fa-brands fa-square-github" target="_blank">Data Location</a>
+		<a href="https://colab.research.google.com/drive/1942dsm-H1xXTJTbVNkA4i7cGHr7ZvfSr?usp=sharing" class="icon brands fa-github" target="_blank"></a>
                 </div>
                 </br>
   
               <!-- Question 1 - Scatterplot -->
                 <header class="main"><h3><i><font color="#c45454">Question 1 - In areas that have a larger count of pharmacies, is there also an increased amount of the population that is on Medicare?</font></i></h3></header>
                 <p>&emsp; This question hopes to find a pattern in the data where areas that have more pharmacies relate to a higher increase in the population that is enrolled in Medicare. Since the two columns in the data are quantitative, a scatterplot is created to plot the counties based on the Medicare enrollment rate and the number of pharmacies. An additional feature that was also encoded into the visual was whether the County is determined to be a Metropolitan by the Department of Agriculture. This was done to see there was any difference in Counties that have more Cities and if so, how much of a difference existed. The final piece of information that was encoded into the visual was creating a simple linear regression of the data, to try to give a quantitative value to any impact the Medicare enrollment rates had on the number of Pharmacies that are located in that County.</p>
-                <div align="center">
-  			<div id="observablehq-viewof-scatter-80bc15e5"></div>
-			<p>Credit: <a href="https://observablehq.com/d/962713d64e57a609">Semester Project by broderickaj</a></p>
+                <div align="center" style="max-width: 800px; margin: 0 auto;">
+  			<div id="observablehq-viewof-scatter-80bc15e5" style="width:100%;"></div>
+			<p>Credit: <a href="https://observablehq.com/d/962713d64e57a609" target="_blank">Semester Project by broderickaj</a></p>
 			
 			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@observablehq/inspector@5/dist/inspector.css">
 			<script type="module">
@@ -94,9 +95,9 @@
                 <img src="..\images\cs625project_choropleth_scale_all.png" alt="choropleth scale">
                 </div>
                 
-                <div align="center">
-                	<div id="observablehq-viewof-map_usa-c8f33a6e"></div>
-			<p>Credit: <a href="https://observablehq.com/d/962713d64e57a609">Semester Project by broderickaj</a></p>
+                <div align="center" style="max-width: 800px; margin: 0 auto;">
+                	<div id="observablehq-viewof-map_usa-c8f33a6e" style="width:100%;"></div>
+			<p>Credit: <a href="https://observablehq.com/d/962713d64e57a609" target="_blank">Semester Project by broderickaj</a></p>
 			
 			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@observablehq/inspector@5/dist/inspector.css">
 			<script type="module">
@@ -106,6 +107,7 @@
 			  if (name === "viewof map_usa") return new Inspector(document.querySelector("#observablehq-viewof-map_usa-c8f33a6e"));
 			});
 			</script>
+		</div>
                 <p>&emsp; Whilst there are not truly unique patterns in the visual that answer the question, it does help guide the user to areas that might be of interest. From the visual, there are a couple areas on the map that stand out when looking for the dark blue that emphasize a high concentration of Medicare enrollees and a high residential energy usage rate. Some of these areas include:</p>
                 <div align = center>
                 <ul style="display: inline-block;" align="left">
@@ -120,9 +122,9 @@
   									
   									
   							<p>&emsp; An additional layer of interactivity was also created by including a second version of the chart with a drop-down selection feature. This allows for a more detailed look and analysis for a single State.</p>
-  							<div align="center">
-  							<div id="observablehq-viewof-filter_map-7cd4cba1"></div>
-							<p>Credit: <a href="https://observablehq.com/d/962713d64e57a609">Semester Project by broderickaj</a></p>
+  							<div align="center" style="max-width: 800px; margin: 0 auto;">
+  							<div id="observablehq-viewof-filter_map-7cd4cba1" style="width:100%;"></div>
+							<p>Credit: <a href="https://observablehq.com/d/962713d64e57a609" target="_blank">Semester Project by broderickaj</a></p>
 							
 							<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@observablehq/inspector@5/dist/inspector.css">
 							<script type="module">
@@ -150,44 +152,32 @@
 									<hr class="major" />
 								</section>
 
-						</div>
+
 					</div>
 
 				<!-- Sidebar -->
-					<div id="sidebar">
-						<div class="inner">
-							<!-- Menu -->
-								<nav id="menu">
-									<header class="major">
-										<h2>Menu</h2>
-									</header>
-									<ul>
-										<li><a href="..\index.html">Homepage</a></li>
-										<li><a href="..\images\Broderick_Resume.pdf">Resume</a></li>
-									</ul>
-								</nav>
+					<div id="sidebar-placeholder"></div>
+					<script>
+					  fetch('../components/sidebar.html')
+					    .then(response => response.text())
+					    .then(data => {
+					      document.getElementById('sidebar-placeholder').innerHTML = data;
+					
+					      // Toggle sidebar when the toggle button is clicked
+					      const toggleButton = document.getElementById('sidebarToggle');
+					      const sidebar = document.getElementById('sidebar');
+					
+					      if (toggleButton && sidebar) {
+					        toggleButton.addEventListener('click', (e) => {
+					          e.preventDefault(); // Prevent default anchor behavior
+					          sidebar.classList.toggle('inactive');
+					        });
+					      }
+					    })
+					    .catch(error => console.error("Sidebar load error:", error));
+					</script>
 
-							<!-- Section -->
-								<section>
-									<header class="major">
-										<h2>Get in touch</h2>
-									</header>
-									<p>This site was developed as a requirement for the Department of Computer Science at ODU. If you have any questions feel free to reach out to my email below.</p>
-									<ul class="contact">
-										<li class="icon solid fa-envelope"><a href="#">abrod006@odu.edu</a></li>
-										<!-- <li class="icon solid fa-phone">(000) 000-0000</li> -->
-										<li class="icon solid fa-home">Richmond, Virginia</li>
-									</ul>
-								</section>
-
-							<!-- Footer -->
-								<footer id="footer">
-									<p class="copyright">&copy; Untitled. All rights reserved. Demo Images: <a href="https://unsplash.com">Unsplash</a>. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
-								</footer>
-
-						</div>
-					</div>
-
+			</div>
 			</div>
 
 		<!-- Scripts -->
