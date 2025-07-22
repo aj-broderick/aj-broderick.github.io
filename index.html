@@ -164,7 +164,8 @@
 											</div>
 										</article>
 										<article>
-											<span class="fa-brands fa-python"></span>
+											<!--<span class="fa-brands fa-python"></span>-->
+											<i class="fa-brands fa-python"></i>
 											<div class="content">
 												<h3>Python</h3>
 												<p>4 years of experience using Python for data pre-processing and analysis, with a focus on cleaning, transforming, and analyzing datasets using libraries like pandas and NumPy.</p>
@@ -211,7 +212,7 @@
 							  <dl>
 							    <dt>San Francisco Fire Department Respond Time</dt>
 							    <dd>
-							      <p>This project leveraged machine learning and other analytic methods to predict response times to incidents by the San Francisco Fire Department. To process the data, Spark SQL was utilized to pre-process the raw data that was then fed into a Random Forest model in PySpark </br>
+							      <p>This project leveraged machine learning and other analytic methods to predict response times to incidents by the San Francisco Fire Department. To process the data, Spark SQL was utilized to pre-process the raw data that was then fed into a Random Forest model in PySpark.</br>
 							      &emsp;The Google Colab notebook with all work done for the project can be found <a href="https://colab.research.google.com/drive/1Srzbxft1Gs4q6KuFWb6QW-X2Ds-3fA5r?usp=sharing" target="_blank">here</a>.</p>
 							    </dd>
 							  </dl>
@@ -232,7 +233,7 @@
 							   <dt>Transformer Encoder and Decoder</dt>
 							    <dd>
 							      <p>Built an encoder & decoder models using the Wikipedia Sentences & AG News datasets by tokenizing the sentences and preparing input–output pairs, trained the model using cross-entropy loss with teacher forcing to improve learning, and evaluated model using perplexity metric.</br>
-							      &emsp;Enocoder script located <a href="https://github.com/aj-broderick/ODU-CS733/blob/main/Module6/Pytorch%20Encoder%20AG%20News.ipynb" target="_blank">here</a>, and Decoder script located <a href="https://github.com/aj-broderick/ODU-CS733/blob/main/Module6/Pytorch%20Decoder%20Wiki.ipynb" target="_blank">here</a></p>
+							      &emsp;Enocoder script located <a href="https://github.com/aj-broderick/ODU-CS733/blob/main/Module6/Pytorch%20Encoder%20AG%20News.ipynb" target="_blank">here</a>, and Decoder script located <a href="https://github.com/aj-broderick/ODU-CS733/blob/main/Module6/Pytorch%20Decoder%20Wiki.ipynb" target="_blank">here</a>.</p>
 							    </dd>
 							  </dl>
 							</section>
@@ -249,8 +250,8 @@
 					      document.getElementById('sidebar-placeholder').innerHTML = data;
 					
 					      // Toggle sidebar when the toggle button is clicked
-					      const toggleButton = document.getElementById('sidebarToggle');
-					      const sidebar = document.getElementById('sidebar');
+					      const toggleButton = document.querySelector('#sidebar-placeholder #sidebarToggle');
+      					      const sidebar = document.querySelector('#sidebar-placeholder #sidebar');
 					
 					      if (toggleButton && sidebar) {
 					        toggleButton.addEventListener('click', (e) => {
